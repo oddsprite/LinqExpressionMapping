@@ -7,11 +7,9 @@ namespace ExpressionMapping.Mapping
     {
         public static User ToUser(ExternalUser externalUser)
         {
-            return new User
-            {
-                Forename = externalUser.Forename,
-                ForenameSpecified = externalUser.Forename != null
-            };
+            var user = new User();
+            ExpressionMapper.PopulatePropertyAndSpecifiedField(() => user.Forename, externalUser.Forename);
+            return user;
         }
     }
 }
